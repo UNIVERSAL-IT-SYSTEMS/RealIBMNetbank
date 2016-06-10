@@ -47,25 +47,38 @@ public class Login extends HttpServlet {
 		out.print("Hello DTU Students");
 		ResultSet result;
 		try {
-			result = statement.executeQuery("SELECT \"client_id\", \"client_password\"FROM \"DTUGRP08\".\"CLIENT\"");
+			result = statement.executeQuery("SELECT \"client_id\", \"client_password\" FROM \"DTUGRP08\".\"CLIENT\"");
 			while (result.next()) {
 					id = result.getString(1);
 					password = result.getString(2);
 					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
 						request.getRequestDispatcher("Forside_Kunde.jsp").forward(request, response);
 						return;
-					/*} else if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
-						request.getRequestDispatcher("Forside_raadgiver.jsp").forward(request, response);
-						return;*/
-					//response.getWriter().print("<br><font face=courier>Table Record = " + studnr + ", " + name + ", " + studtype + "</font>");
 					}
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			result = statement.executeQuery("SELECT \"advisor_id\", \"adv_password\" FROM \"DTUGRP08\".\"ADVISOR\"");
+			while (result.next()) {
+					id = result.getString(1);
+					password = result.getString(2);
+					System.out.println(id + ", " + password);
+					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
+						request.getRequestDispatcher("Forside_raadgiver.jsp").forward(request, response);
+						return;
+					}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			request.getRequestDispatcher("overfoer.jsp").forward(request, response);
+		} catch (Exception e) {
 			// TODO Automatisk genereret catch-blok
 			e.printStackTrace();
 		}
-		
-		request.getRequestDispatcher("overfoer.jsp").forward(request, response);
 			
 	}
 }
