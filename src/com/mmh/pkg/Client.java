@@ -50,4 +50,40 @@ public class Client {
 		
 		
 	}
+
+	public String getClient_id() {
+		return client_id;
+	}
+
+	public String getClient_name() {
+		return client_name;
+	}
+
+	/*public void setClient_name(String client_name) {
+		this.client_name = client_name;
+	}*/
+
+	public String getClient_postalnr() {
+		return client_postalnr;
+	}
+
+	/*public void setClient_postalnr(String client_postalnr) {
+		this.client_postalnr = client_postalnr;
+	}*/
+
+	public String getClient_password() {
+		return client_password;
+	}
+
+	/*public void setClient_password(String client_password) {
+		this.client_password = client_password;
+	}*/
+
+	public String getClient_advisor() {
+		return client_advisor;
+	}
+
+	/*public void setClient_advisor(String client_advisor) {
+		this.client_advisor = client_advisor;
+	}*/
 }

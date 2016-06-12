@@ -46,6 +46,8 @@ public class Login extends HttpServlet {
 	
 		PrintWriter out = response.getWriter();
 		ResultSet result;
+		
+		// first try and see if the ID and password match with any of the clients in the CLIENT tabel
 		try {
 			result = statement.executeQuery("SELECT \"client_id\", \"client_password\" FROM \"DTUGRP08\".\"CLIENT\"");
 			while (result.next()) {
@@ -59,6 +61,8 @@ public class Login extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		// If it does not match with any of the clients, then check if it matches with any advisors from the ADVISOR database
 		try {
 			result = statement.executeQuery("SELECT \"advisor_id\", \"adv_password\" FROM \"DTUGRP08\".\"ADVISOR\"");
 			while (result.next()) {
@@ -72,9 +76,10 @@ public class Login extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		// Lastly if it does not match with any of them, take the user to a page, where they get the opportunity to try again
 		try {
 			request.getRequestDispatcher("wrongLoginInformation.jsp").forward(request, response);
-			//request.getRequestDispatcher("overfoer.jsp").forward(request, response);
 		} catch (Exception e) {
 			// TODO Automatisk genereret catch-blok
 			e.printStackTrace();
