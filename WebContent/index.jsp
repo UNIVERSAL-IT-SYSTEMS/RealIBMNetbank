@@ -17,23 +17,16 @@
 			<article>
 				<section>
 					<ul>
-				<form class="form-signin" action="Login" method="post">
-
-			ID:<br>
-			<input type="text" name="username" value=""><br><br>
-			Password:<br>
-			<input type="password" name="password" value=""><br><br>
-			<input type="submit" value="Login">
-  
-		</form>
-
-				</ul>
+						<form class="form-signin" action="Login" method="post">
+							ID:<br>
+							<input type="text" name="username" value=""><br><br>
+							Password:<br>
+							<input type="password" name="password" value=""><br><br>
+							<input type="submit" value="Login">
+						</form>
+					</ul>
 				</section>
 			</article>
-			
 		
-		</main>
-		
-</body>
-</body>
+		</body>
 </html>

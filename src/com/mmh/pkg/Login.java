@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +45,6 @@ public class Login extends HttpServlet {
 		}
 	
 		PrintWriter out = response.getWriter();
-		out.print("Hello DTU Students");
 		ResultSet result;
 		try {
 			result = statement.executeQuery("SELECT \"client_id\", \"client_password\" FROM \"DTUGRP08\".\"CLIENT\"");
@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 					id = result.getString(1);
 					password = result.getString(2);
 					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
-						request.getRequestDispatcher("Forside_Kunde.jsp").forward(request, response);
+						request.getRequestDispatcher("frontPageCostumer.jsp").forward(request, response);
 						return;
 					}
 			}
@@ -64,9 +64,8 @@ public class Login extends HttpServlet {
 			while (result.next()) {
 					id = result.getString(1);
 					password = result.getString(2);
-					System.out.println(id + ", " + password);
 					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
-						request.getRequestDispatcher("Forside_raadgiver.jsp").forward(request, response);
+						request.getRequestDispatcher("frontPageAdvisor.jsp").forward(request, response);
 						return;
 					}
 			}
@@ -74,11 +73,14 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 		try {
-			request.getRequestDispatcher("overfoer.jsp").forward(request, response);
+			request.getRequestDispatcher("wrongLoginInformation.jsp").forward(request, response);
+			//request.getRequestDispatcher("overfoer.jsp").forward(request, response);
 		} catch (Exception e) {
 			// TODO Automatisk genereret catch-blok
 			e.printStackTrace();
 		}
+		
+		
 			
 	}
 }
