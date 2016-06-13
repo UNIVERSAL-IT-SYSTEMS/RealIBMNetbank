@@ -36,6 +36,7 @@ public class Client {
 		} catch (Exception e) {
 			// TODO Automatisk genereret catch-blok
 			e.printStackTrace();
+			System.out.println("YOLO.SWAG");
 		}
 		
 		ResultSet result;
