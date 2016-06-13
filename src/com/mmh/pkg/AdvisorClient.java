@@ -37,7 +37,7 @@ public class AdvisorClient {
 		
 		ResultSet result;
 		try {
-			result = statement.executeQuery("SELECT \"adv_name\", \"adv_id\", \"adv_phone\", \"adv_dept\" FROM \"DTUGRP08\".\"ADVISOR\" WHERE client_id=" + client_id);
+			result = statement.executeQuery("SELECT \"adv_name\", \"adv_id\", \"adv_phone\", \"dept_id\" FROM \"DTUGRP08\".\"ADVISOR\" NATURAL JOIN \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\"='" + client_id + "'");
 			this.client_id = client_id;
 			this.advisor_name = result.getString(1);
 			this.advisor_id = result.getString(2);

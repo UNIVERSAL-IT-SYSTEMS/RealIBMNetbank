@@ -17,10 +17,10 @@
       
       <nav>
       <ul>
-        <li><a href="Forside_Kunde.jsp">Forside</a></li>
-        <li><a href="overfoer.jsp">Overførsel</a></li>
-        <li><a href="kontobevaegelser.jsp">Kontobevægelser</a></li>        
-        <li><a href="info.jsp">Info</a></li>
+        <li><a href="frontPageCostumer.jsp">Forside</a></li>
+        <li><a href="transferMoney.jsp">Overførsel</a></li>
+        <li><a href="accountTransactions">Kontobevægelser</a></li>        
+        <li><a href="infoCostumer.jsp">Info</a></li>
       </ul>
     </nav>
 		
