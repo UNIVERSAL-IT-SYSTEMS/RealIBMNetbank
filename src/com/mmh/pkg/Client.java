@@ -2,7 +2,9 @@ package com.mmh.pkg;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
@@ -36,18 +38,35 @@ public class Client {
 		} catch (Exception e) {
 			// TODO Automatisk genereret catch-blok
 			e.printStackTrace();
-			System.out.println("YOLO.SWAG");
 		}
 		
-		ResultSet result;
+		
+		String query = "SELECT \"client_name\", \"client_postalnr\", \"client_password\", \"advisor_id\" FROM \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\" = ?";
 		try {
-			result = statement.executeQuery("SELECT \"client_name\", \"client_postalnr\", \"client_password\", \"advisor_id\" FROM \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\"='" + client_id + "'");
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, client_id);
+			ResultSet rs = ps.executeQuery();
 			this.client_id = client_id;
+			while(rs.next()) {
+				this.client_name = rs.getString("client_name");
+				this.client_postalnr = rs.getString("client_postalnr");
+				this.client_password = rs.getString("client_password");
+				this.client_advisor = rs.getString("advisor_id");
+			}
+			} catch (SQLException e1) {
+			// TODO Automatisk genereret catch-blok
+			e1.printStackTrace();
+		}
+		
+		//ResultSet result;
+		try {
+			//result = statement.executeQuery("SELECT \"client_name\", \"client_postalnr\", \"client_password\", \"advisor_id\" FROM \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\"='" + client_id + "'");
+			/*this.client_id = client_id;
 			this.client_name = result.getString(1);
 			this.client_postalnr = result.getString(2);
 			this.client_password = result.getString(3);
-			this.client_advisor = result.getString(4);
-			System.out.println(client_id + ", " + client_name + ", " + client_postalnr + ", " + client_password + ", " + client_advisor);
+			this.client_advisor = result.getString(4);*/
+			//System.out.println(client_id + ", " + client_name + ", " + client_postalnr + ", " + client_password + ", " + client_advisor);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Der er en fejl");
