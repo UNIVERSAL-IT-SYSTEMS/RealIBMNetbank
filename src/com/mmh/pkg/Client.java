@@ -19,6 +19,8 @@ public class Client {
 	private String client_password;
 	private String client_advisor;
 	
+	
+	// Constructor which from a given client ID gets the remaining information from the database
 	public Client(String client_id) {
 		
 		Properties properties = new Properties();

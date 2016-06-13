@@ -15,8 +15,10 @@
       <ul>
         <li><a href="Forside_Kunde.jsp">Forside</a></li>
         <li><a href="overfoer.jsp">Overførsel</a></li>
-        <li><a href="kontobevaegelser.jsp">Kontobevægelser</a></li>        
+        <li><a href="kontobevaegelser.jsp">Kontobevægelser</a></li> 
+        <form action="CostumerFrontPage" method="post">       
         <li><a href="Info.jsp">Info</a></li>
+        </form>
       </ul>
     </nav>
 		
