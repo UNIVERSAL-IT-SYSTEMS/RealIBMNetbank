@@ -2,7 +2,9 @@ package com.mmh.pkg;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
@@ -35,9 +37,43 @@ public class AdvisorClient {
 			e.printStackTrace();
 		}
 		
-		ResultSet result;
+		String query = "SELECT \"advisor_id\" FROM \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\" = ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, client_id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				this.advisor_id = rs.getString("advisor_id");
+			}
+			} catch (SQLException e1) {
+			// TODO Automatisk genereret catch-blok
+			e1.printStackTrace();
+			
+			}
+		
+		
+		query = "SELECT \"adv_name\", \"adv_id\", \"adv_phone\", \"dept_id\" FROM \"DTUGRP08\".\"ADVISOR\" WHERE \"adv_id\" = ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, advisor_id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				this.advisor_name = rs.getString("adv_name");
+				this.advisor_id = rs.getString("adv_id");
+				this.advisor_phone = rs.getString("adv_phone");
+				this.advisor_dept = rs.getString("dept_id");
+			}
+			} catch (SQLException e1) {
+			// TODO Automatisk genereret catch-blok
+			e1.printStackTrace();
+			
+			}
+		}
+		
+/*		ResultSet result;
 		try {
 			result = statement.executeQuery("SELECT \"adv_name\", \"adv_id\", \"adv_phone\", \"dept_id\" FROM \"DTUGRP08\".\"ADVISOR\" NATURAL JOIN \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\"='" + client_id + "'");
+			
 			this.client_id = client_id;
 			this.advisor_name = result.getString(1);
 			this.advisor_id = result.getString(2);
@@ -47,11 +83,12 @@ public class AdvisorClient {
 			e.printStackTrace();
 		}
 	}
+	
+*/
 
 	public String getClient_id() {
 		return client_id;
 	}
-
 
 	public String getAdvisor_name() {
 		return advisor_name;
