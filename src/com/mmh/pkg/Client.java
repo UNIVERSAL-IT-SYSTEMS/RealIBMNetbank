@@ -41,14 +41,16 @@ public class Client {
 		
 		ResultSet result;
 		try {
-			result = statement.executeQuery("SELECT \"client_name\", \"client_postalnr\", \"client_password\", \"advisor_id\" FROM \"DTUGRP08\".\"CLIENT\" WHERE client_id=" + client_id);
+			result = statement.executeQuery("SELECT \"client_name\", \"client_postalnr\", \"client_password\", \"advisor_id\" FROM \"DTUGRP08\".\"CLIENT\" WHERE \"client_id\"='" + client_id + "'");
 			this.client_id = client_id;
 			this.client_name = result.getString(1);
 			this.client_postalnr = result.getString(2);
 			this.client_password = result.getString(3);
 			this.client_advisor = result.getString(4);
+			System.out.println(client_id + ", " + client_name + ", " + client_postalnr + ", " + client_password + ", " + client_advisor);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Der er en fejl");
 		}
 		
 		

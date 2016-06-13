@@ -22,7 +22,7 @@
 	
 	<main>
 			<article>
-				<h2><a href="enkeltkontobevaegelser.html">Kontonummer 1</a></h2>
+				<h2><a href="singleAccountTransactions.jsp">Kontonummer 1</a></h2>
 			</article>
 			
 			<article>
