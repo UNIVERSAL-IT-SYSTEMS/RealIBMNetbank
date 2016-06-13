@@ -26,7 +26,10 @@ public class Account {
 	private String client_id;
 	private String account_id;
 	private String balance;
-	private List<Account> accountArray = new ArrayList();
+	private String currency;
+	private String interest_rate;
+	// private List<Account> accountArray = new ArrayList();
+	private String[] account = new String[5];
 	
 	
 	public Account(String client_id/*, int account_Nr*/) {
@@ -46,16 +49,39 @@ public class Account {
 			e.printStackTrace();
 		}
 		
-		ResultSet result;
+		
+		String query = "SELECT \"acc_id\", \"balance\", \"client_id\", \"currency\", \"interest_rate\", FROM \"DTUGRP08\".\"ACCOUNT\" WHERE \"client_id\" = ?";
 		try {
-			result = statement.executeQuery("SELECT \"acc_id\", \"balance\" FROM \"DTUGRP08\".\"ACCOUNT\" WHERE client_id=" + client_id);
-			this.client_id = client_id;
-			this.account_id = result.getString(1);
-			this.balance = result.getString(2);
-			//accountArray.add();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, client_id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				this.account_id = rs.getString("acc_id");
+				this.balance = rs.getString("balance");
+				this.client_id = rs.getString("client_id");
+				this.currency = rs.getString("currency");
+				this.interest_rate = rs.getString("interest_rate");
+
+			}
+			account[0] = account_id;
+			account[1] = balance;
+			account[2] = client_id;
+			account[3] = currency;
+			account[4] = interest_rate;
+
+			for (String s: account)
+	        {
+	          System.out.println(s);
+	        }
+			
+			
+			} catch (SQLException e1) {
+			// TODO Automatisk genereret catch-blok
+			e1.printStackTrace(); 
+			}
+			
+			
+		
 		
 		
 	}
@@ -72,6 +98,7 @@ public class Account {
 	public String getBalance() {
 		return balance;
 	}
+	
 
 	/*public void setBalance(String balance) {
 		this.balance = balance;

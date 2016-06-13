@@ -56,8 +56,10 @@ public class Login extends HttpServlet {
 					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
 						Client client = new Client(id);
 						AdvisorClient advisor = new AdvisorClient(id);
+						Account account = new Account(id);
 						request.setAttribute("currentClient", client);
 						request.setAttribute("currentAdvisorClient", advisor);
+						request.setAttribute("currentAccount", account);
 						request.getRequestDispatcher("infoCostumer.jsp").forward(request, response);
 						return;
 					}
