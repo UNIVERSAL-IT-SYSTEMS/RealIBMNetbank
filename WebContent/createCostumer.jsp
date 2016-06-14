@@ -12,49 +12,34 @@
       
       <nav>
       <ul>
-        <li><a href="Forside_raadgiver.jsp">Forside</a></li>
-        <li><a href="overfoer.jsp">Overførsel</a></li>
-        <li><a href="kontobevaegelser.jsp">Kontobevægelser</a></li>        
-        <li><a href="Info.jsp">Info</a></li>
+         <li><a href="frontPageAdvisor.jsp">Forside</a></li>
+        <li><a href="createCostumer.jsp">Opret ny kunde</a></li>
 		</ul>
     </nav>	
 	
 	<main>
 		<article>
 			<h2>Opret kunde</h2>
-		
-				<form action="action_page.php">
 					<section>
 					<ul>
-						<p>Navn:</p>
-							Fornavn:
-								<input type="text" name="For" value=""><br>
-							Efternavn:
-								<input type="text" name="Efter" value=""><br>
-					</ul>
-					</section>
-					
-					<section>
-					<ul>
-						<p>Adresse:</p>
-							Gade:
-								<input type="text" name="Modtager" value=""><br>
-							By:
-								<input type="text" name="Modtager" value=""><br>
+						<form class="form-signin" action="CreateCostumer" method="post">
+							ID:<br>
+							<input type="text" name="client_id" value=""><br><br>
+
+							Navn:<br>
+								<input type="text" name="client_name" value=""><br>
+							Password:<br>
+								<input type="text" name="client_password" value=""><br>
 							Postnummer:
-								<input type="text" name="Modtager" value=""><br>
+								<input type="text" name="client_postalnr" value=""><br>
+							Rådgiver ID:
+								<input type="text" name="advisor_id" value=""><br>
+								<input type="submit" value="Opret Kunde">
+						</form>
+							
 					</ul>
 					</section>
 					
-					<section>
-					<ul>
-						Telefon:<br>
-							<input type="text" name="Beloeb" value=""><br><br>
-					</ul>
-					</section>
-					
-					<input type="submit" value="Send">
-				</form>
 		</article>
 	</main>
 	</body>

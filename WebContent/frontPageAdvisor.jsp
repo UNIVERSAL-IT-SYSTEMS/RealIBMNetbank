@@ -14,8 +14,7 @@
       <nav>
       <ul>
         <li><a href="Forside_raadgiver.jsp">Forside</a></li>
-        <li><a href="OpretKunde.jsp">Opret ny kunde</a></li>
-        <li><a href="">Opret ny konto</a></li>
+        <li><a href="createCostumer.jsp">Opret ny kunde</a></li>
 
       </ul>
     </nav>
