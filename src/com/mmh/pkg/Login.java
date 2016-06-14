@@ -6,6 +6,7 @@ import java.sql.*;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,21 +57,28 @@ public class Login extends HttpServlet {
 					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
 						Client client = new Client(id);
 						AdvisorClient advisor = new AdvisorClient(id);
-						Account account = new Account(id);
+
 						request.setAttribute("currentClient", client);
 						request.setAttribute("currentAdvisorClient", advisor);
-						request.setAttribute("currentAccount", account);
-						request.getRequestDispatcher("infoCostumer.jsp").forward(request, response);
-						return;
+						//request.setAttribute("currentAccount", account);
+						
+						
+						request.setAttribute("ID", id);
+						System.out.println("Før - Login");
+
+						//ServletContext context = getServletContext();
+						request.getRequestDispatcher("/GenerateAccountInfo").forward(request, response);
+						System.out.println("Efter - Login");
 					}
 			}
 		} catch (SQLException e) {
+			System.out.println("catch - Login");
 			e.printStackTrace();
 		}
 		
 		// If it does not match with any of the clients, then check if it matches with any advisors from the ADVISOR database
 		try {
-			result = statement.executeQuery("SELECT \"advisor_id\", \"adv_password\" FROM \"DTUGRP08\".\"ADVISOR\"");
+			result = statement.executeQuery("SELECT \"adv_id\", \"adv_password\" FROM \"DTUGRP08\".\"ADVISOR\"");
 			while (result.next()) {
 					id = result.getString(1);
 					password = result.getString(2);

@@ -24,15 +24,12 @@ public class Account {
 	private String url = "jdbc:db2://192.86.32.54:5040/DALLASB";
 
 	private String client_id;
-	private String account_id;
-	private String balance;
-	private String currency;
-	private String interest_rate;
-	// private List<Account> accountArray = new ArrayList();
-	private String[] account = new String[5];
+
+	private ArrayList<String> account_ID_Array = new ArrayList();
+	private ArrayList<String> account_Balance_Array = new ArrayList();
 	
 	
-	public Account(String client_id/*, int account_Nr*/) {
+	public Account(String client_id) {
 
 		Properties properties = new Properties();
 		properties.put("user","DTU22");
@@ -41,7 +38,7 @@ public class Account {
 		properties.put("emulateParameterMetaDataForZCalls", "1");
 	
 		try {
-			Class.forName("com.ibm.db2.jcc.DB2Driver");
+			Class.forName("com.ibm.db2.jc c.DB2Driver");
 			connection = DriverManager.getConnection(url, properties);
 			statement = connection.createStatement();
 		} catch (Exception e) {
@@ -50,59 +47,48 @@ public class Account {
 		}
 		
 		
-		String query = "SELECT \"acc_id\", \"balance\", \"client_id\", \"currency\", \"interest_rate\", FROM \"DTUGRP08\".\"ACCOUNT\" WHERE \"client_id\" = ?";
+
+		String query = "SELECT \"acc_id\", \"balance\" FROM \"DTUGRP08\".\"ACCOUNT\" WHERE \"client_id\" = ?";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, client_id);
+			ps.setString(1,client_id);
 			ResultSet rs = ps.executeQuery();
+			//request.setAttribute("accounts",rs);
+			
+			
+			/*ps.setString(1, client_id);
+			ResultSet rs = ps.executeQuery();
+			this.client_id = client_id;
 			while(rs.next()) {
-				this.account_id = rs.getString("acc_id");
-				this.balance = rs.getString("balance");
-				this.client_id = rs.getString("client_id");
-				this.currency = rs.getString("currency");
-				this.interest_rate = rs.getString("interest_rate");
-
-			}
-			account[0] = account_id;
-			account[1] = balance;
-			account[2] = client_id;
-			account[3] = currency;
-			account[4] = interest_rate;
-
-			for (String s: account)
-	        {
-	          System.out.println(s);
-	        }
-			
-			
+				this.account_ID_Array.add(rs.getString("acc_id"));
+				this.account_Balance_Array.add(rs.getString("balance"));
+				System.out.println(account_ID_Array + "   " + account_Balance_Array);
+			}*/
 			} catch (SQLException e1) {
 			// TODO Automatisk genereret catch-blok
-			e1.printStackTrace(); 
+				e1.printStackTrace();
 			}
-			
-			
-		
-		
-		
-	}
-
-	public String getClient_id() {
-		return client_id;
 	}
 
 
-	public String getAccount_id() {
-		return account_id;
+
+	public ArrayList<String> getAccount_ID_Array() {
+		return account_ID_Array;
 	}
 
-	public String getBalance() {
-		return balance;
+	public String getSingleAccount_ID(int numb) {
+		return account_ID_Array.get(numb);
 	}
-	
 
-	/*public void setBalance(String balance) {
-		this.balance = balance;
-	}*/
-	
-	
+
+
+	public ArrayList<String> getAccount_Balance_Array() {
+		return account_Balance_Array;
+	}
+
+	public String getSingleAccount_Balance(String numb) {
+		int numbInt = Integer.parseInt(numb);
+		return account_Balance_Array.get(numbInt);
+	}
+
 }
