@@ -13,7 +13,7 @@
       
       <nav>
       <ul>
-        <li><a href="Forside_Kunde.html">Forside</a></li>
+        <li><a href="frontPageCostumer.jsp">Forside</a></li>
         <li><a href="overfoer.html">Overførsel</a></li>
         <li><a href="kontobevaegelser.html">Kontobevægelser</a></li>        
         <li><a href="info.html">Info</a></li>
