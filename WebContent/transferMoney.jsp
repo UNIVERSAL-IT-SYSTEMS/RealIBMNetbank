@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		
 		<%@ page import="com.mmh.pkg.Account" %>
-		<%@ page import="com.mmh.pkg.GenerateAccountInfo" %>
+		<%@ page import="com.mmh.pkg.GenerateTransactionInfo" %>
 		<%@ page import="java.sql.ResultSet" %>
 		<%@ page import="java.util.*" %>
 	</head>
@@ -31,27 +31,22 @@
 		<article>
 			<h2>Overfør penge</h2>
 				<section>
-				<ul>
-				<form action="action_page.php">
-					<p>Fra konto:</p>
-					<select>
-						<c:forEach items="${accounts}" var="current">
-               				<tr>
-               					<option value=""><c:out value="${current.account_id}"/></option>
-               				</tr>
-               			</c:forEach>
-					</select><br><br>
-				
-					<p>Til konto:</p>
-					<input type="text" name="Modtager" value=""><br><br>
-				
-					<p>Beløb:</p>
-					<input type="text" name="Beloeb" value=""><br><br>
-					<input type="submit" value="Send">
-	
-				</form>
-				</ul>
-			</section>
+					<ul>
+						<form class="form-signin" action="TransferMoney" method="post">
+							Fra Konto:<br>
+							<input type="text" name="account_from" value=""><br><br>
+							Til Konto:<br>
+							<input type="text" name="account_to" value=""><br><br>
+							Beløb:<br>
+							<input type="text" name="amount" value=""><br><br>
+							Tekst til kontoudtog:
+							<input type="text" name="description" value=""><br><br>
+							Transaktions ID:<br>
+							<input type="text" name="transaction_id" value=""><br><br>
+							<input type="submit" value="Overfør">
+						</form>
+					</ul>
+				</section>
 		<article>
 	</main>
 	

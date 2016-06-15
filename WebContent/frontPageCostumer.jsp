@@ -21,7 +21,7 @@
       <nav>
       <ul>
         <li><a href="frontPageCostumer.jsp">Forside</a></li>
-        <li><a href="GenerateTransactionInfo">Overførsel</a></li>
+        <li><a href="transferMoney.jsp">Overførsel</a></li>
         <li><a href="kontobevaegelser.jsp">Kontobevægelser</a></li> 
         <li><a href="infoCostumer.jsp">Info</a></li>
       </ul>

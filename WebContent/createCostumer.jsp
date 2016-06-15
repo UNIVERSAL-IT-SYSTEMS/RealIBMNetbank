@@ -34,7 +34,17 @@
 								<input type="text" name="client_postalnr" value=""><br>
 							Rådgiver ID:
 								<input type="text" name="advisor_id" value=""><br>
+							Kontonummer:
+								<input type="text" name="account_id" value=""><br>
+							Start Beløb:
+								<input type="text" name="balance" value=""><br>
+							Valuta:
+							<input type="text" name="currency" value=""><br>
+							Rente Procent:
+							<input type="text" name="interest_rate" value=""><br>
 								<input type="submit" value="Opret Kunde">
+		
+								
 						</form>
 							
 					</ul>

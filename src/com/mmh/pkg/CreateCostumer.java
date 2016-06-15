@@ -27,6 +27,10 @@ public class CreateCostumer extends HttpServlet {
 	String client_postalnr = null;
 	String client_password = null;
 	String advisor_id = null;
+	String account_id = null;
+	String balance = null;
+	String currency = null;
+	String interest_rate = null;
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,17 +60,35 @@ public class CreateCostumer extends HttpServlet {
 		this.client_postalnr = request.getParameter("client_postalnr");
 		this.client_password = request.getParameter("client_password");
 		this.advisor_id = request.getParameter("advisor_id");
+		String account_id = request.getParameter("account_id");
+		String balance = request.getParameter("balance");
+		String currency = request.getParameter("currency");
+		String interest_rate = request.getParameter("interest_rate");
 		
-		
-		String query = "INSERT INTO \"DTUGRP08\".\"CLIENT\" VALUES (?, ?, ?, ?, ?)";
+		System.out.println("1");
+		String query1 = "INSERT INTO \"DTUGRP08\".\"CLIENT\" VALUES (?, ?, ?, ?, ?)";
+		String query2 = "INSERT INTO \"DTUGRP08\".\"ACCOUNT\" VALUES (?, ?, ?, ?, ?)";
 		try {
-			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, client_id);
-			ps.setString(2, client_name);
-			ps.setString(3, client_postalnr);
-			ps.setString(4, client_password);
-			ps.setString(5, advisor_id);
-			ResultSet rs = ps.executeQuery();
+			System.out.println("2");
+			PreparedStatement ps1 = connection.prepareStatement(query1);
+			System.out.println("3");
+			PreparedStatement ps2 = connection.prepareStatement(query2);
+			System.out.println("4");
+			ps1.setString(1, client_id);
+			ps1.setString(2, client_name);
+			ps1.setString(3, client_postalnr);
+			ps1.setString(4, client_password);
+			ps1.setString(5, advisor_id);
+			System.out.println("5");
+			ps1.executeUpdate();
+			System.out.println("6");
+			ps2.setString(1, account_id);
+			ps2.setString(2, balance);
+			ps2.setString(3, client_id);
+			ps2.setString(4, currency);
+			ps2.setString(5, interest_rate);
+			System.out.println("7");
+			ps2.executeUpdate();
 			
 			} catch (SQLException e1) {
 			// TODO Automatisk genereret catch-blok
