@@ -57,7 +57,7 @@ public class Login extends HttpServlet {
 					if (id.equals(request.getParameter("username")) && password.equals(request.getParameter("password"))) {
 						Client client = new Client(id);
 						AdvisorClient advisor = new AdvisorClient(id);
-
+						//Account account = new Account(id);
 						request.setAttribute("currentClient", client);
 						request.setAttribute("currentAdvisorClient", advisor);
 						//request.setAttribute("currentAccount", account);
@@ -69,6 +69,9 @@ public class Login extends HttpServlet {
 						//ServletContext context = getServletContext();
 						request.getRequestDispatcher("/GenerateAccountInfo").forward(request, response);
 						System.out.println("Efter - Login");
+
+						
+						return;
 					}
 			}
 		} catch (SQLException e) {

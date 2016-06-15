@@ -1,67 +1,53 @@
 <!DOCTYPE>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>Trygbank - Forside</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<%@ page import="com.mmh.pkg.Account" %>
+		<%@ page import="com.mmh.pkg.GenerateAccountInfo" %>
+		<%@ page import="java.sql.ResultSet" %>
 		
 	</head>
 	<body>
 		<header class="banner">
 			<h1>Forside</h1>
 		</header>
+	
+		<% ArrayList<Account> accounts = (ArrayList<Account>) request.getAttribute("accounts");%>
       
       <nav>
       <ul>
         <li><a href="Forside_Kunde.jsp">Forside</a></li>
         <li><a href="overfoer.jsp">Overførsel</a></li>
         <li><a href="kontobevaegelser.jsp">Kontobevægelser</a></li> 
-        <form action="CostumerFrontPage" method="post">       
-        <li><a href="Info.jsp">Info</a></li>
-        </form>
+        <li><a href="infoCostumer.jsp">Info</a></li>
       </ul>
     </nav>
+    	
+    	
 		
 		<main>
 			<article>
-              <h2><a href="Kontobevaegelser.html">Kontonummer 1</a></h2>
+              <h2>Konti</h2>
 				<section>
 					<ul>
-                      <p>Saldo: </p>
-
+					
+					<TH> Konto ID: </th>
+					<TH> &nbsp &nbsp &nbsp &nbsp Saldo: </th>
+					<table>
+               			<c:forEach items="${accounts}" var="current">
+               				<tr>
+               					<td><c:out value="${current.account_id}" /><td>
+               					<td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <c:out value="${current.balance}" /><td>
+               				</tr>
+               			</c:forEach>
+					</table>
 				</ul>
 				</section>
-			</article>
-			
-					<article>
-              <h2><a href="Kontobevaegelser.html">Kontonummer 2</a></h2>
-				<section>
-					<ul>
-                      <p>Saldo: </p>
-
-				</ul>
-				</section>
-			</article>
-          			<article>
-              <h2><a href="Kontobevaegelser.html">Kontonummer 3</a></h2>
-				<section>
-					<ul>
-                      <p>Saldo: </p>
-
-				</ul>
-				</section>
-			</article>
-          
-          	<article>
-              <h2><a href="Kontobevaegelser.jsp">Kontonummer 4</a></h2>
-				<section>
-					<ul>
-                      <p>Saldo: </p>
-
-				</ul>
-				</section>
-			</article>
-			
+			</article>	
 
 		
 		</main>

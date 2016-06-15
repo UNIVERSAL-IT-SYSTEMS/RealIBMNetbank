@@ -15,18 +15,22 @@ import javax.sql.DataSource;
 
 import java.util.Properties;
 
-@WebServlet("/createCostumer")
-public class createCostumer extends HttpServlet {
+@WebServlet("/CreateCostumer")
+public class CreateCostumer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
 	private Statement statement;
 	private String url = "jdbc:db2://192.86.32.54:5040/DALLASB";
+	
+	String client_id = null;
+	String client_name = null;
+	String client_postalnr = null;
+	String client_password = null;
+	String advisor_id = null;
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = null;
-		String password = null;
 	
 		Properties properties = new Properties();
 		properties.put("user","DTU22");
@@ -46,6 +50,28 @@ public class createCostumer extends HttpServlet {
 	
 		PrintWriter out = response.getWriter();
 		ResultSet result;
+		
+		this.client_id = request.getParameter("client_id");
+		this.client_name = request.getParameter("client_name");
+		this.client_postalnr = request.getParameter("client_postalnr");
+		this.client_password = request.getParameter("client_password");
+		this.advisor_id = request.getParameter("advisor_id");
+		
+		
+		String query = "INSERT INTO \"DTUGRP08\".\"CLIENT\" VALUES (?, ?, ?, ?, ?)";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, client_id);
+			ps.setString(2, client_name);
+			ps.setString(3, client_postalnr);
+			ps.setString(4, client_password);
+			ps.setString(5, advisor_id);
+			ResultSet rs = ps.executeQuery();
+			
+			} catch (SQLException e1) {
+			// TODO Automatisk genereret catch-blok
+			e1.printStackTrace();
+		}
 		
 	}
 	
