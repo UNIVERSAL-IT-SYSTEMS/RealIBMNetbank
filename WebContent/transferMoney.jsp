@@ -2,11 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Trygbank - OverfÃ¸r</title>
+		<title>G8Bank - Overfør</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		
 		<%@ page import="com.mmh.pkg.Account" %>
-		<%@ page import="com.mmh.pkg.GenerateTransactionInfo" %>
 		<%@ page import="java.sql.ResultSet" %>
 		<%@ page import="java.util.*" %>
 	</head>
@@ -20,10 +19,8 @@
       
       <nav>
       <ul>
-        <li><a href="frontPageCostumer.jsp">Forside</a></li>
-        <li><a href="/transferMoney">Overførrsel</a></li>
-        <li><a href="accountTransactions.jsp">Kontobevægelser</a></li>        
-        <li><a href="infoCostumer.jsp">Info</a></li>
+        <li><a href="transferMoney.jsp">Overførsel</a></li>
+        <li><a href="index.jsp">Log ud</a></li>
       </ul>
     </nav>	
 	
@@ -49,6 +46,11 @@
 				</section>
 		<article>
 	</main>
+	
+			<footer>
+				<p>G8Bank</p>
+		</footer>
+	
 	
 	</body>
 </html>

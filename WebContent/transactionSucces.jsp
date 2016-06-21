@@ -4,7 +4,7 @@
 <html lang="en"> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>TrygBank - Transaktion Gennemført</title>
+<title>TG8Bank - Transaktion Gennemført</title>
 <link rel="stylesheet" type="text/css" href="style.css" >
 
 </head>
@@ -16,10 +16,14 @@
 	<article>
 		<section>
 			<ul>
-			<h3>Transaktionen er udført. <a href="Login">Tryk her for at vende tilbage til forsiden</a></h3>
+			<h3>Transaktionen er udført. <a href="index.jsp">Tryk her for at logge ind igen</a></h3>
 			</ul>
 		</section>
 	</article>
+	
+			<footer>
+				<p>G8Bank</p>
+		</footer>
 	
 </body>
 </html>
